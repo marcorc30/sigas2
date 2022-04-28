@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+	
+<head>
+	<title>Informações Importantes</title>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-switch.min.css}">
+</head>	
+
+<body>
+
+<section layout:fragment="conteudo">		
+
+		<div class="jumbotron">
+			<h1 align="center">SIGAS - Sistema Bolsa Social </h1>
+			<p align="center">Controle de concessão de bolsas sociais - Rede La Salle - 
+		
+			Ano Letivo: <strong>2022</strong>
+
+			</p>
+		</div>
+
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				<h2><mark>Informações Importantes:</mark></h2>
+			</div>
+			<div class="panel-footer">
+				Olá, <strong><mark>prezado Sr Responsável</mark></strong>,
+				leia abaixo algumas observações importantes:<p>
+				
+<!-- 				<security:authorize access="!hasRole('ROLE_RESPONSAVEL')">
+ -->
+				<ul>
+ 				    <li>Esse sistema, <strong>SIGAS</strong> - Sistema Bolsa Social, foi desenvolvido para facilitar
+				        o controle / processo de concessão de bolsas sociais aos alunos da Rede La Salle. O objetivo 
+				        é obter o maior número de informações para que possamos avaliar a condição de vulnerabilidade
+				        de cada candidato. Para tal, temos algumas telas de cadastro.
+				         
+					<li><strong>CADASTROS:</strong> O cadastro se divide em 4 passos:
+
+					<ul>
+						<li>Passo 1:<strong><mark> Cadastro do responsável financeiro:</mark></strong> É o ponto inicial do processo. Só depois de cadastrado
+						    o responsável financeiro é que poderemos cadastrar os candidatos.  
+						<li>Passo 2:<strong><mark> Cadastro do candidatos:</mark></strong> Nesse ponto iremos cadastrar todos os candidatos associados ao responsável
+						    financeiro. Depois de gravado ele será ligado ao responsável financeiro e posteriormente poderemos associar os componentes familiares e situação habitacional.
+						<li>Passo 3:<strong><mark> Cadastro de Componentes Familiares:</mark></strong> Nesse ponto iremos associar todos os componentes familiares que moram
+						    com o candidato, informando os dados pessoais e suas respectivas rendas. É de extrema importância a informação correta 
+						    da renda, pois o sistema irá classificar a colocação de cada candidato através dessa informação. 
+						<li>Passo 4:<strong><mark> Cadastro da Situação Habitacional:</mark></strong> Aqui nós iremos informar qual a situação habitacional se encontra cada 
+						    candidato. Essa informação poderá influenciar na classificação final dos candidatos com situação financeira semelhante.
+						<li>Passo 5:<strong><mark>Inclusão da Documentação em formato PDF</mark></strong> Nesse ponto, será anexado ao sistema os documentos necessários para
+						    validação das informações prestadas no momento do cadastro. O envio desses documentos não é opcional, sendo automaticamente excluído do processo o não
+						    envio dessa documentação.    
+				    </ul>	    
+				   
+				    <li><strong>ACESSOS:</strong>
+					    <ul>
+							<li>Nessa página você poderá consultar o andamento do processo de concessão de bolsa social 2022. Acesse o sistema 
+							    periodicamente para verificar o andamento e visualizar possíveis comunicados da assistente social para você. Fique atento
+							    aos prazos estipulados e confira as regras gerais no edital disponibilizado.
+			            </ul>
+
+		            <p>
+				    <li><strong>INFORMAÇÕES ADICIONAIS (OPCIONAL):</strong>
+					    <ul>
+							<li>Você poderá cadastrar opcionalmente no sistema, informações adicionais que você julgar necessário, em um texto de até 700 caracteres. Essas informações
+							    complementares estarão disponíveis para a assistente social no momento da análise.
+			            </ul>
+		            <p>
+		            <li><strong>FASES DO PROCESSO:</strong>
+
+		            <ul>
+						<li>Abaixo você poderá verificar quais são as fases em que seu processo pode se encontrar no momento da consulta:
+						    <ul>
+							    <li><strong> AGUARDANDO ANÁLISE:</strong> Informa que o processo já foi incluído no sistema;
+							    <li><strong> EM ANÁLISE:</strong> Informa que o processo está sendo analisado;
+							    <li><strong> PENDENTE:</strong> Informa que o processo está com pendência de informações / documentação;
+							    <li><strong> CONCLUÍDO:</strong> Informa que não existem pendências no processo e que a análise da assistente social está concluída. Após essa etapa aguardar resultado na data da divulgação.
+						    </ul>
+					</ul>
+					  
+			        <li><strong>RESULTADO DO PROCESSO:</strong>
+			            <ul>
+			               <li>O resultado final só será disponibilizado na data indicada no edital, mesmo que seu processo apareça com status de concluído.
+					       <li>Podem haver 4 resultados possíveis no resultado do processo:
+							    <ul>
+								    <li><strong> <span class="cor_span">Indeferido:</span> </strong> O processo foi indeferido pela assistente social.
+								    <li><strong> <span class="cor_span_cancel"> Cancelado:</span></strong> O processo foi cancelado pela assistente social por falta de documentação, perda de prazo ou outro motivo específico.
+								    <li><strong> <span class="cor_span_ok">50%:</span></strong> Processo deferido com percentual de 50%.
+								    <li><strong> <span class="cor_span_ok">100%:</span></strong> Processo deferido com percentual de 100%.
+							    </ul>
+			               <li>Data divulgação: 
+			               20/12/2022
+			            </ul>
+					    <br>
+					<li><strong>Contatos Assistente Social:</strong>
+					   <ul>
+					     <li><i class="glyphicon glyphicon-user"></i>      Maria do Rosário
+					     <li><i class="glyphicon glyphicon-earphone"></i>  (21) 3443-7878 R 131
+					     <li><i class="glyphicon glyphicon-envelope"></i>  social@lasalle.org.br
+					    </ul>
+					   <br>
+			            <li><strong>ATENDIMENTOS PRESENCIAIS:</strong>
+			            <ul>
+			               <li>Segundas-feiras de 7h30 às 13h45, mediante prévio agendamento.
+					     </ul>
+					     <br>
+					    <li><strong>CONSULTAR ANDAMENTO DO PROCESSO:</strong>
+					    	<ul>
+								<li>Clique no menu lateral <strong>CONSULTAR PROCESSO</strong> para verificar o andamento do seu processo.
+					    	</ul>
+					     	
+ 				</ul>    
+				<p>
+				<p>Atenciosamente,
+				<p>Serviço de Assistência Social - Colégio La Salle.
+			</div>
+		</div>
+
+</section>				
+</body>
+</html>
+
+
+

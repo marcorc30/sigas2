@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<aside class="aw-layout-sidebar  js-sidebar" th:fragment="sidebar">
+			<div class="aw-layout-sidebar__content">
+
+				<nav class="aw-menu  js-menu">
+					<ul class="aw-menu__list">
+
+				      <li class="aw-menu__item is-active">
+				          <a th:href="@{/}"><i class="glyphicon glyphicon-stats"></i><span>Dashboard</span></a>
+				        </li>
+
+				      <li class="aw-menu__item is-active">
+				          <a th:href="@{/informacao}"><i class="glyphicon glyphicon-info-sign"></i><span class="btn btn-warning">Informações</span></a>
+				        </li>
+				 
+						<li class="aw-menu__item is-expanded"><a href="#"> <i
+								class="fa  fa-fw  fa-file-text"></i><span>Cadastros</span> <i
+								class="aw-menu__navigation-icon  fa"></i>
+						</a> 
+
+							<ul class="aw-menu__list  aw-menu__list--sublist ">
+								<li class="aw-menu__item  aw-menu__item--link "><a
+									th:href="@{/novo/responsavel}">Cadastro do Responsável</a></li>
+							
+								<li class="aw-menu__item  aw-menu__item--link  "><a
+									th:href="@{/novo/candidato}">Cadastro do Candidato</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="#">Consultar Processo</a></li>
+							</ul></li>
+
+						<li class="aw-menu__item  is-expanded "><a href="#"> <i
+								class="fa  fa-fw  fa-file-text"></i><span>Páginas comuns</span>
+								<i class="aw-menu__navigation-icon  fa"></i>
+						</a>
+
+							<ul class="aw-menu__list  aw-menu__list--sublist">
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="#">Página vazia</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="#">Login</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="#">Esqueceu a senha</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="#">403</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="#">404</a></li>
+								<li class="aw-menu__item  aw-menu__item--link"><a
+									href="#">500</a></li>
+							</ul></li>
+
+					</ul>
+				</nav>
+
+			</div>
+		</aside>
+</body>
+</html>

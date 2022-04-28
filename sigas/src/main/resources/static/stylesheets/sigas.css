@@ -1,0 +1,37 @@
+.botao{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.table-consulta{
+  margin-top: 20px;	
+}
+
+
+.ad-glyphicon-large{
+	font-size: 18px; 
+}
+
+
+.ad-field-action{
+	display: flex;
+	
+}
+
+.ad-field-action__icon{
+	margin: 6px 0 0 5px;
+}
+
+.ad-field-action-apoio__icon{
+	margin: 6px 0 0 5px;
+}
+
+.ad-field-action-label{
+	display: flex;
+}
+
+
+.checkbox input[type="checkbox"]:checked + input + label::after{
+	font-family: 'FontAwesome';
+	content: "\f00c";
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+	
+<head>
+	<title>Cadastro de Responsável</title>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-switch.min.css}">
+</head>	
+
+<body>
+
+
+
+	<section layout:fragment="conteudo">		
+
+			<div class="page-header">
+				<div class="container-fluid">
+				  <div class="row">
+				    <div class="col-sm-10">
+	 				  <h1>Cadastro de Candidatos</h1>
+<!-- 	 				  <h2 th:foreach="lista : ${lista}">Responsável: <span th:text="${lista.nome}">Marco</span></h2>
+ -->					</div>  
+					<div class="col-sm-2">
+						<div class="aw-page-header-controls">
+							<a class="btn  btn-default">
+								<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Pesquisar Candidatos</span>
+							</a>
+						</div>
+					</div>
+				  </div> 
+				</div>
+			</div>
+
+			<div class="container-fluid">
+
+				<form method="POST" th:object="${candidato}" class="form-vertical  js-form-loading">
+				
+				<th:block th:replace="fragments/MensagensErroValidacao :: messageErro"></th:block> 
+						
+						<div class=row>
+							<div class="col-sm-3">
+								<div class="form-group">
+									<label>Número:</label>
+									<input id="numero" name="numero" class="form-control" type="text" th:field="*{id}"/>
+								</div>
+							</div>	
+						
+							<div class="col-sm-9" th:classappend="${#fields.hasErrors('nome') } ? has-error">
+								<div class="form-group">
+									<label class="control-label">Nome:</label>
+									<input id="nome" name="nome" class="form-control" type="text" th:field="*{nome}"/>
+								</div>
+							</div>	
+							
+						</div>
+
+						<div class=row>
+							<div class="col-sm-3" th:classappend="${#fields.hasErrors('dataNascimento')} ? has-error">
+								<div class="form-group">
+									<label class="control-label">Data de Nascimento:</label>
+									<input id="dataNascimento" name="dataNascimento" class="form-control" type="text"  th:field="*{dataNascimento}"/>
+								</div>
+							</div>
+						
+							<div class="col-sm-3" th:classappend="${#fields.hasErrors('sexo')} ? has-error">
+								<div class="form-group">
+									<label>Sexo:</label>
+									<select id="sexo" name="sexo" class="form-control" th:field="*{sexo}">
+										<option disabled="disabled" selected="selected" value="">Sexo</option>
+										<option th:each="sexo : ${sexos}" th:value="${sexo}" th:text="${sexo.descricao}">Masculino</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="col-sm-3" th:classappend="${#fields.hasErrors('parentesco')} ? has-error">
+								<div class="form-group">
+									<label class="control-label">Parentesco:</label>
+									<select id="parentescoResponsavelFinanceiro" name="parentescoResponsavelFinanceiro" class="form-control" th:field="*{parentesco}" >
+									  <option  disabled="disabled" selected="selected" value="">Informe o Grau de Parentesco</option>
+									  <option value="Filho(a)">Filho(a)</option>
+									  <option value="Sobrinho(a)">Sobrinho(a)</option>
+									  <option value="Enteado(a)">Enteado(a)</option>
+									  <option value="Neto(a)">Neto(a)</option>
+									  <option value="Irm&atilde;o(&atilde;)">Irmão(ã)</option>
+									  <option value="Primo(a)">Primo(a)</option>
+									  <option value="Outros">Outros</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="col-sm-3" th:classappend="${#fields.hasErrors('endereco.cep')} ? has-error">>
+								<div class="form-group">
+									<label class="control-label">CEP:</label>
+									<input id="cep" name="endereco.cep" class="form-control"  type="text" th:field="*{endereco.cep}"/>
+								</div>
+							</div>
+							
+						
+						</div>
+
+						<div class="row">
+							
+							<div class="col-sm-9" th:classappend="${#fields.hasErrors('endereco.endereco')} ? has-error">>
+								<div class="form-group">
+									<label class="control-label">Endereço:</label>
+									<input id="endereco" name="endereco.endereco" class="form-control"  type="text" th:field="*{endereco.endereco}"/>
+								</div>
+							</div>
+
+							<div class="col-sm-3" th:classappend="${#fields.hasErrors('endereco.cidade')} ? has-error">>
+								<div class="form-group">
+									<label class="control-label">Cidade:</label>
+									<input id="cidade" name="endereco.cidade" class="form-control"  type="text" th:field="*{endereco.cidade}"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+
+							<div class="col-sm-9" th:classappend="${#fields.hasErrors('endereco.bairro')} ? has-error">>
+								<div class="form-group">
+									<label class="control-label">Bairro:</label>
+									<input id="bairro" name="endereco.bairro" class="form-control" type="text" th:field="*{endereco.bairro}"/>
+								</div>
+							</div>
+
+							<div class="col-sm-3">
+								<div class="form-group" th:classappend="${#fields.hasErrors('endereco.estado')} ? has-error">>
+									<label class="control-label">Estado:</label>
+									<select id="estado" name="endereco.estado" class="form-control" >
+									<option disabled="disabled" selected="selected" value="">Selecione o Estado</option>
+									    <option value="AC">AC</option>
+									    <option value="AL">AL</option>
+									    <option value="AP">AP</option>
+									    <option value="AM">AM</option>
+									    <option value="BA">BA</option>
+									    <option value="CE">CE</option>
+									    <option value="DF">DF</option>
+									    <option value="ES">ES</option>
+									    <option value="GO">GO</option>
+									    <option value="MA">MA</option>
+									    <option value="MS">MS</option>
+									    <option value="MT">MT</option>
+									    <option value="MG">MG</option>
+									    <option value="PA">PA</option>
+									    <option value="PB">PB</option>
+									    <option value="PR">PR</option>
+									    <option value="PE">PE</option>
+									    <option value="PI">PI</option>
+									    <option value="RJ">RJ</option>
+									    <option value="RN">RN</option>
+									    <option value="RS">RS</option>
+									    <option value="RO">RO</option>
+									    <option value="RR">RR</option>
+									    <option value="SC">SC</option>
+									    <option value="SP">SP</option>
+									    <option value="SE">SE</option>
+									    <option value="TO">TO</option>									
+                                      </select>				
+					           		</div>
+					           	</div>	
+						</div>
+
+						<div class="row">
+							<div class="col-sm-3" th:classappend="${#fields.hasErrors('instituicaoOrigem')} ? has-error">>
+								<div class="form-group">
+									<label class="control-label">Instituição de Origem:</label>
+									<select id="instituicaoOrigem" name="instituicaoOrigem" class="form-control" th:field="*{instituicaoOrigem}">
+										<option disabled="disabled" selected="selected" value="">Instituição
+											de Origem</option>
+										<option value="LA SALLE">LA SALLE</option>
+										<option value="Outra Escola Particular">Outra Escola Particular</option>
+										<option value="Escola P&uacute;blica">Escola Pública</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-sm-3" th:classappend="${#fields.hasErrors('cursoPretendido')} ? has-error">>
+								<div class="form-group">
+									<label class="control-label">Curso Pretendido:</label>
+									<select id="curso" name="cursoPretendido.id" class="form-control" th:field="*{cursoPretendido}">
+										<option disabled="disabled" selected="selected" value="">Curso
+											Pretendido</option>
+													<option value="EF I">Ensino Fundamental I</option>
+													<option value="EF II">Ensino Fundamental II</option>
+													<option value="EI">Educação Infantil</option>
+													<option value="EM">Ensino Médio</option>
+													<option value="" selected></option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-sm-3" th:classappend="${#fields.hasErrors('serie')} ? has-error">>
+								<div class="form-group">
+									<label class="control-label">Série:</label>
+									<select id="serie" name="serie.id" class="form-control" th:field="*{serie}">
+										<option disabled="disabled" selected="selected" value="">Série Pretendida</option>
+													<option value="01A">1 ANO EF I</option>
+													<option value="01S">1 SÉRIE EM</option>
+													<option value="02A">2 ANO EF I</option>
+													<option value="02S">2 SÉRIE EM</option>
+													<option value="03A">3 ANO EF I</option>
+													<option value="03S">3 SÉRIE EM</option>
+													<option value="04A">4 ANO EF I</option>
+													<option value="05A">5 ANO EF I</option>
+													<option value="06A">6 ANO EF I</option>
+													<option value="07A">7 ANO EF I</option>
+													<option value="08A">8 ANO EF I</option>
+													<option value="09A">9 ANO EF I</option>
+													<option value="EI4">INFANTIL 4</option>
+													<option value="EI5">INFANTIL 5</option>
+													<option value="MT2">MATERNAL 2</option>
+													<option value="MT3">MATERNAL 3</option>
+													<option value="" selected></option>
+									</select>
+								</div>
+							</div>
+
+							<div class="col-sm-3" th:classappend="${#fields.hasErrors('turno')} ? has-error">>
+								<div class="form-group">
+									<label class="control-label">Turno:</label>
+									<select id="turno" name="turno" class="form-control" th:field="*{turno}">
+										<option disabled="disabled" selected="selected" value="">Informe
+											o Turno</option>
+										<option value="Matutino">Matutino</option>
+										<option value="Verspertino">Vespertino</option>
+									</select>
+								</div>
+							</div>
+							
+						</div>
+
+						<div class="panel panel-default">
+						  <!-- Default panel contents -->
+						  <div class="panel-heading">Outras Informações:</div>
+<!--  						  <div class="panel-body">
+						    <p>teste</p>
+						  </div>
+ -->						
+						  <!-- Table -->
+						  <table class="table">
+						     <tr>
+						        <td><strong>Mora perto da escola?</strong></td>
+	 							<td>
+										<input type="checkbox" class="js-status" data-size="small" data-off-color="danger"
+			              							  data-on-text="Sim" data-off-text="Não" th:field="*{moraPertoEscola}" />
+								</td>	
+								<td></td>						        
+						     </tr>
+
+						     <tr>
+						        <td><strong>Possui Irmãos no Colégio?</strong></td>
+	 							<td>
+										<input type="checkbox" class="js-status" data-size="small" data-off-color="danger"
+			              							  data-on-text="Sim" data-off-text="Não" th:field="*{possuiIrmaosColegio}"/>
+								</td>	
+								<td></td>						        
+						     </tr>
+
+						     <tr>
+						        <td><strong>Possui Deficiência?</strong></td>
+	 							<td>
+										<input type="checkbox" class="js-status" data-size="small" data-off-color="danger"
+			              							  data-on-text="Sim" data-off-text="Não" th:field="*{possuiDeficiencia}" />
+								</td>	
+
+ 								<td>
+									<div class="form-group invisivel border-div" id="divDeficiencia">
+										<input id="numeroCID" name="numeroCID" class="form-control" 
+											placeholder="Informe o n&uacute;mero do CID" type="text" th:field="*{cid}"/>
+									</div>
+								</td>						        
+						     </tr>
+ 
+						     <tr>
+						        <td><strong>CadÚnico?</strong></td>
+	 							<td>
+										<input type="checkbox" class="js-status" data-size="small" data-off-color="danger"
+			              							  data-on-text="Sim" data-off-text="Não" />
+								</td>	
+
+ 								<td>
+								<div class="form-group invisivel border-div" id="divCadUn">
+									<input id="descricaoCadUnico" name="descricaoCadUnico" class="form-control" placeholder="Informe a descri&ccedil;&atilde;o do Cad&Uacute;nico" type="text" value=""/>
+								</div>
+ 								</td>						        
+						     </tr>
+
+						     <tr>
+						        <td><strong>Transferência de Renda?</strong></td>
+	 							<td>
+										<input type="checkbox" class="js-status" data-size="small" data-off-color="danger"
+			              							  data-on-text="Sim" data-off-text="Não" />
+								</td>	
+
+ 								<td>
+								<div class="form-group invisivel border-div" id="divPTR">
+									<input id="descricaoProgramaTransferenciaRenda" name="descricaoProgramaTransferenciaRenda" class="form-control" placeholder="Informe a descri&ccedil;&atilde;o do Programa" type="text" value=""/>
+								</div>
+ 								</td>						        
+						     </tr>
+
+						  </table>
+						</div>
+
+					<div class="form-group">
+						<button class="btn  btn-primary" type="submit">Salvar</button>
+						<a href="pesquisa-responsaveis.html" class="btn  btn-default">Cancelar</a>
+ 					</div>
+ 
+
+ 
+				</form>  
+			</div>
+
+</section>
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/javascripts/vendors/bootstrap-switch.min.js}"></script>
+	<script th:src="@{/javascripts/sigas.js}"></script>
+</th:block>
+
+</body>
+</html>
